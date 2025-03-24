@@ -2,7 +2,9 @@ package com.ifsc.contaclicks;
 
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -13,24 +15,30 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    Integer i = 0;
+    int i = 0;
+    EditText edpeso, edaltura;
+    TextView tvresultadoimc;
+    Button Button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView tv=findViewById(R.id.TextView);
-        tv.setText(getString(R.string.app_name));
-        Button b=findViewById(R.id.Button);
+        edpeso= findViewById(R.id.edpeso);
+        edaltura= findViewById(R.id.edaltura);
+        tvresultadoimc= findViewById(R.id.tvresultadoimc);
+        Button= findViewById(R.id.Button);
 
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tv.setText(Integer.toString(i) );
-                i++;
+        Button.setOnClickListener(v -> {
+            //calcular o imc
+            //recuperar os dados anteriormente
 
-            }
+            double peso, altura, imc;
+            peso=Double.parseDouble(edpeso.getText().toString());
+            altura= Double.parseDouble((edaltura.getText().toString()));
+            imc=peso/(altura*altura);
+
+            tvresultadoimc.setText(Double.toString(imc));
         });
-
     }
 }
