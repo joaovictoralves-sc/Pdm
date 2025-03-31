@@ -1,6 +1,7 @@
 package com.ifsc.contaclicks;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("ciclo de vida", "metodo onCreate");
         setContentView(R.layout.activity_main);
         edpeso= findViewById(R.id.edpeso);
         edaltura= findViewById(R.id.edaltura);
@@ -44,5 +46,30 @@ public class MainActivity extends AppCompatActivity {
 
             tvresultadoimc.setText(decimalformat.format(imc));
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("ciclo de vida", "metodo onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("ciclo de vida", "metodo onResume");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("ciclo de vida", "metodo onStop");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("ciclo de vida", "metodo onPause");
+
     }
 }
