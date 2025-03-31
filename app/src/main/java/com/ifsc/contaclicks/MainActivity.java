@@ -13,6 +13,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     int i = 0;
@@ -37,8 +39,10 @@ public class MainActivity extends AppCompatActivity {
             peso=Double.parseDouble(edpeso.getText().toString());
             altura= Double.parseDouble((edaltura.getText().toString()));
             imc=peso/(altura*altura);
+            //formatando numero ##,##
+            DecimalFormat decimalformat = new DecimalFormat("##.##");
 
-            tvresultadoimc.setText(Double.toString(imc));
+            tvresultadoimc.setText(decimalformat.format(imc));
         });
     }
 }
