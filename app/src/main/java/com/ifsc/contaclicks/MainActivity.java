@@ -3,6 +3,7 @@ package com.ifsc.contaclicks;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -19,18 +20,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TextView tv=findViewById(R.id.TextView);
-        tv.setText(getString(R.string.app_name));
-        Button b=findViewById(R.id.Button);
-
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tv.setText(Integer.toString(i) );
-                i++;
-
-            }
-        });
-
     }
 }
