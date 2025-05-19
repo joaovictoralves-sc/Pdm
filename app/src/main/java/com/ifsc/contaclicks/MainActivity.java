@@ -13,24 +13,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.lang.reflect.Array;
-
 public class MainActivity extends AppCompatActivity {
-
-    int i = 0;
-    String [] nomes = new String[] {"Anne", "Fernanda", "João1", "João2", "João3"};
+    int i=0;
+    String [] nomes= new String[] {"Anne","Fernanda","João1", "João2","João3"};
     ListView lv;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Recuperar listView
-        lv = findViewById(R.id.listView);
+        //recupera listview
+        lv= findViewById(R.id.listview);
 
         //Adaptador
-        ArrayAdapter<String> a = new ArrayAdapter<>(
+        ArrayAdapter<String> a=new ArrayAdapter(
                 this,
                 R.layout.item_lista,
                 R.id.textView,
