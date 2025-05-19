@@ -6,8 +6,7 @@ import java.io.Serializable;
 
 public class Planeta implements Serializable {
     String nome;
-    //Bitmap Imagem;
-    Integer imagem; //São recursos da pasta drawable R.drawable.nome
+    Integer imagem;
 
     public Planeta(String nome, Integer imagem) {
         this.nome = nome;

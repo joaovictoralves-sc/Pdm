@@ -25,9 +25,8 @@ public class AdapterPlaneta extends ArrayAdapter<Planeta> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        LayoutInflater layoutInflater = LayoutInflater.from(getContext());//Objeto que processa XML layout
+        LayoutInflater layoutInflater = LayoutInflater.from(getContext());
         convertView= layoutInflater.inflate(mresoucer,parent,false);
-        //preenhcer o item da view
         TextView tvnome= convertView.findViewById(R.id.textView);
         ImageView im =convertView.findViewById(R.id.imageView);
 

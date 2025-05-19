@@ -21,7 +21,7 @@ public class PlanetaActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageViewPlaneta);
         TextView textView = findViewById(R.id.tvNomePlaneta);
 
-        imageView.setImageResource(p.imagem); // Correção do nome do método
-        textView.setText(p.nome); // Correção: era "TextView.setText"
+        imageView.setImageResource(p.imagem);
+        textView.setText(p.nome);
     }
 }

@@ -23,16 +23,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //recupera listview
         lv= findViewById(R.id.listview);
 
-        PlanetaDao planetaDao=new PlanetaDao();// Data Source
+        PlanetaDao planetaDao=new PlanetaDao();
 
 
         AdapterPlaneta ap=new AdapterPlaneta(this,
                 R.layout.item_lista,
                 planetaDao.getPlatenas());
-        //Exibir lista de Planetas
         lv.setAdapter(ap);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -40,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Planeta p = planetaDao.getPlatenas().get(position);
 
-                //Criamos uma intenção para abrir nova atividade
                 Intent i = new Intent(getApplicationContext(),PlanetaActivity.class);
                 i.putExtra("planeta",p);
                 startActivity(i);
