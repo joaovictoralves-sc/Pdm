@@ -1,42 +1,46 @@
 package com.ifsc.contaclicks;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
-
-    EditText edtPeso, edtAltura;
-    Button btnCalcular;
+    int i=0;
+    EditText edpeso,edaltura;
+    TextView tvresulado;
+    Button buttonCalcular;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("ciclo de vida","metodo onCreate");
         setContentView(R.layout.activity_main);
+        edpeso=findViewById(R.id.edpeso);
+        edpeso.setText("80");
+        edaltura=findViewById(R.id.edaltura);
+        edaltura.setText("1.80");
 
-        edtPeso = findViewById(R.id.edtPeso);
-        edtAltura = findViewById(R.id.edtAltura);
-        btnCalcular = findViewById(R.id.btnCalcular);
+        buttonCalcular=findViewById(R.id.button);
+        //define um tratamento para o click do botão
+        buttonCalcular.setOnClickListener(v->{
+            Intent intent = new Intent(getApplicationContext(), MainActivityB.class);
+            Double peso= Double.parseDouble(edpeso.getText().toString());
+            Double altura= Double.parseDouble(edaltura.getText().toString());
+            //Definindi parametros para o bundle peso e altura
+            intent.putExtra("peso", peso);
+            intent.putExtra("altura", altura);
 
-        btnCalcular.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String pesoStr = edtPeso.getText().toString();
-                String alturaStr = edtAltura.getText().toString();
-
-                if (!pesoStr.isEmpty() && !alturaStr.isEmpty()) {
-                    double peso = Double.parseDouble(pesoStr);
-                    double altura = Double.parseDouble(alturaStr);
-                    double imc = peso / (altura * altura);
-
-                    Intent intent = new Intent(MainActivity.this, MainActivityB.class);
-                    intent.putExtra("imc", imc);
-                    startActivity(intent);
-                }
-            }
+            startActivity(intent);
         });
     }
+
 }
