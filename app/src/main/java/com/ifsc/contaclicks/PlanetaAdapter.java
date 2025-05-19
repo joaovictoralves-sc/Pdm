@@ -26,19 +26,18 @@ public class PlanetaAdapter extends ArrayAdapter<Planeta> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-        View view = layoutInflater.inflate(mResource, parent, false);
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        View v = inflater.inflate(mResource, parent, false);
 
-        Planeta planeta = getItem(position);
+        TextView tv = v.findViewById(R.id.textView);
+        ImageView img = v.findViewById(R.id.imageView);
 
-        TextView tv = view.findViewById(R.id.textView);
-        ImageView imageView = view.findViewById(R.id.imageView);
-
-        if (planeta != null) {
-            tv.setText(planeta.getNome());
-            imageView.setImageResource(planeta.getFoto());
+        Planeta p = getItem(position);
+        if (p != null) {
+            tv.setText(p.nome);
+            img.setImageResource(p.foto);
         }
 
-        return view;
+        return v;
     }
 }
