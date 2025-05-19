@@ -4,15 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     ListView lv;
@@ -21,23 +15,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        lv=findViewById(R.id.listview);
 
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-//                android.R.layout.simple_list_item_1,
-//                android.R.id.text1,
-//                nomes);
-        PlanetaAdapter planetaAdapter = new PlanetaAdapter( this,
+        lv = findViewById(R.id.listview);
+
+        DAOPlaneta dao = new DAOPlaneta();
+        PlanetaAdapter planetaAdapter = new PlanetaAdapter(
+                this,
                 R.layout.item_lista,
-                (  new DAOPlaneta()).listplanetas);
+                dao.getListplanetas()
+        );
 
         lv.setAdapter(planetaAdapter);
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                Planeta planetaSelecionado = dao.getListplanetas().get(position);
 
-
-
-
+                Intent intent = new Intent(MainActivity.this, ActivityB.class);
+                intent.putExtra("planeta", planetaSelecionado.getNome());
+                startActivity(intent);
+            }
+        });
     }
-
-
 }

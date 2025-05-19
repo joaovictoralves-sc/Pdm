@@ -1,14 +1,19 @@
 package com.ifsc.contaclicks;
 
-import android.graphics.Bitmap;
-
 public class Planeta {
-    String nome;
-    Integer foto;
-    //Bitmap photo;
+    private String nome;
+    private Integer foto;
 
     public Planeta(String nome, Integer foto) {
         this.nome = nome;
         this.foto = foto;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Integer getFoto() {
+        return foto;
     }
 }

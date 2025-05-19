@@ -14,26 +14,31 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 public class PlanetaAdapter extends ArrayAdapter<Planeta> {
-    Context mContext;
-    Integer mResource;
+    private final Context mContext;
+    private final int mResource;
 
     public PlanetaAdapter(@NonNull Context context, int resource, @NonNull List<Planeta> objects) {
         super(context, resource, objects);
-        mContext=context;
-        mResource=resource;
+        mContext = context;
+        mResource = resource;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater layoutInflater= LayoutInflater.from(mContext);
-        View v= layoutInflater.inflate(mResource,parent,false);
+        LayoutInflater layoutInflater = LayoutInflater.from(mContext);
+        View view = layoutInflater.inflate(mResource, parent, false);
 
-        TextView tv=v.findViewById(R.id.textView);
-        ImageView imageView=v.findViewById(R.id.imageView);
-        Planeta p = getItem(position);
-        tv.setText(p.nome);
-        imageView.setImageResource(p.foto);
-        return v;
+        Planeta planeta = getItem(position);
+
+        TextView tv = view.findViewById(R.id.textView);
+        ImageView imageView = view.findViewById(R.id.imageView);
+
+        if (planeta != null) {
+            tv.setText(planeta.getNome());
+            imageView.setImageResource(planeta.getFoto());
+        }
+
+        return view;
     }
 }
