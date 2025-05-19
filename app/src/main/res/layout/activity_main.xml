@@ -8,9 +8,9 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/Button"
-        android:layout_width="151dp"
-        android:layout_height="62dp"
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:text="calcular"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,29 +19,28 @@
 
     <EditText
         android:id="@+id/edpeso"
-        android:layout_width="143dp"
-        android:layout_height="48dp"
+        android:layout_width="147dp"
+        android:layout_height="42dp"
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="60kg"
-        android:inputType="text"
+        android:inputType="number|numberDecimal"
         app:layout_constraintEnd_toStartOf="@+id/edaltura"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edaltura"
-        android:layout_width="180dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="151dp"
+        android:layout_height="44dp"
         android:ems="10"
-        android:hint="1.7m"
+        android:hint="1.77m"
         android:inputType="number|numberDecimal"
+        app:layout_constraintBottom_toBottomOf="@+id/edpeso"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/edpeso"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/edpeso" />
 
     <TextView
         android:id="@+id/tvpeso"
@@ -52,7 +51,7 @@
         app:layout_constraintStart_toStartOf="@+id/edpeso" />
 
     <TextView
-        android:id="@+id/tvaltura"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Altura"
@@ -63,10 +62,30 @@
         android:id="@+id/tvresultadoimc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="--"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Button" />
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/tvresultadoimc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
