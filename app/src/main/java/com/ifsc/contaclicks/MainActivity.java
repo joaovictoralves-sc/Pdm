@@ -12,23 +12,23 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-
-    Integer i = 0;
+    int i=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Associando objeto interface a variavel local;
         TextView tv=findViewById(R.id.TextView);
         tv.setText(getString(R.string.app_name));
         Button b=findViewById(R.id.Button);
-
+        b.setOnClickListener(v -> {//Seu codigo lindo aqui
+        });
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv.setText(Integer.toString(i) );
+                tv.setText( Integer.toString(i)  );
                 i++;
-
             }
         });
 
