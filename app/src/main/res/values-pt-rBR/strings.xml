@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ContaClicks</string>
+    <string name="app_name">Sqlite</string>
     <string name="ola">Ola</string>
-    <string name="Click">Clique aqui</string>
+    <string name="Click">Inserir</string>
 
 </resources>
