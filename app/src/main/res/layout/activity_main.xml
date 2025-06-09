@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -9,27 +8,38 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/TextView"
+        android:id="@+id/textViewX"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ola"
-        android:textColor="#3F51B5"
-        android:textColorLink="#673AB7"
+        android:textColor="#F44336"
         android:textSize="60sp"
-        app:layout_constraintBottom_toTopOf="@+id/Button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textViewY"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        tools:layout_editor_absoluteX="147dp" />
 
-    <Button
-        android:id="@+id/Button"
+    <TextView
+        android:id="@+id/textViewZ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Click"
-        app:layout_constraintTop_toBottomOf="@id/TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:text="@string/ola"
+        android:textColor="#F44336"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewY"
+        tools:layout_editor_absoluteX="149dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textViewY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ola"
+        android:textColor="#F44336"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewZ"
+        app:layout_constraintTop_toBottomOf="@+id/textViewX"
+        tools:layout_editor_absoluteX="149dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
