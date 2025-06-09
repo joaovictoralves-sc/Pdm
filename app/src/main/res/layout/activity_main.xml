@@ -15,8 +15,9 @@
         android:textColor="#F44336"
         android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewY"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="147dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewZ"
@@ -26,8 +27,9 @@
         android:textColor="#F44336"
         android:textSize="60sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewY"
-        tools:layout_editor_absoluteX="149dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -38,8 +40,9 @@
         android:textColor="#F44336"
         android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewZ"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewX"
-        tools:layout_editor_absoluteX="149dp"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
