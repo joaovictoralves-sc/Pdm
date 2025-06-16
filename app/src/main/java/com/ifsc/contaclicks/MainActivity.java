@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.text.DecimalFormat;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     PackageManager pm;
     List<ApplicationInfo> applicationInfoList;
     ListView lv;
-
+    int position;
 
 
     @Override
@@ -38,6 +38,19 @@ public class MainActivity extends AppCompatActivity {
 
         AppAdapter appAdapter = new AppAdapter(this,R.layout.app_item,applicationInfoList);
         lv.setAdapter(appAdapter);
+
+        lv.setOnItemClickListener((adapterView, view, i, l) -> {
+
+            ApplicationInfo applicationInfo=(ApplicationInfo) adapterView.getItemAtPosition(position);
+            Intent i =pm.getLaunchIntentForPackage(applicationInfo.packageName);
+            if (i!=null){
+                startActivity(i);
+            } else{
+                Toast.makeText(getApplicationContext(), "APP nao lançavel", Toast.LENGTH_LONG);
+            }
+
+
+        });
 
 
     }

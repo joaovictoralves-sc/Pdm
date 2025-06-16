@@ -35,6 +35,7 @@ public class AppAdapter extends ArrayAdapter<ApplicationInfo> {
         TextView tv = v.findViewById(R.id.textView2);
         ApplicationInfo appinfo = getItem(position);
         tv.setText(appinfo.loadLabel(getContext().getPackageManager()));
+        imageView.setImageDrawable(appinfo.loadIcon(getContext().getPackageManager()));
 
         return v;
     }
