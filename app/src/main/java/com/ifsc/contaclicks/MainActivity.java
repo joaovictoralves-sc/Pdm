@@ -1,57 +1,69 @@
 package com.ifsc.contaclicks;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     PackageManager pm;
-    List<ApplicationInfo> applicationInfoList;
-    ListView lv;
-    int position;
 
+    List<ApplicationInfo> applicationInfosList;
+
+    ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         lv=findViewById(R.id.listView);
-        pm=getPackageManager();
 
+        pm = getPackageManager();
 
+        //applicationInfosList = pm.getInstalledApplications(PackageManager.MATCH_ALL);
 
-        applicationInfoList=pm.getInstalledApplications(PackageManager.MATCH_ALL);
+        Intent intentFilter = new Intent(Intent.ACTION_MAIN);
+        intentFilter.addCategory(Intent.CATEGORY_LAUNCHER);
 
-        AppAdapter appAdapter = new AppAdapter(this,R.layout.app_item,applicationInfoList);
+        List<ResolveInfo> lRInfo = pm.queryIntentActivities(intentFilter, 0);
+        applicationInfosList = new ArrayList<>();
+
+        for(ResolveInfo r:lRInfo){
+
+            applicationInfosList.add(r.activityInfo.applicationInfo);
+
+        }
+
+        AppAdapter appAdapter = new AppAdapter(this, R.layout.app_item,applicationInfosList);
         lv.setAdapter(appAdapter);
 
-        lv.setOnItemClickListener((adapterView, view, i, l) -> {
+        lv.setOnItemClickListener((adapterView, view, position, l) -> {
 
-            ApplicationInfo applicationInfo=(ApplicationInfo) adapterView.getItemAtPosition(position);
-            Intent i =pm.getLaunchIntentForPackage(applicationInfo.packageName);
-            if (i!=null){
+            ApplicationInfo appInfo = (ApplicationInfo)adapterView.getItemAtPosition(position);
+            Intent i = pm.getLaunchIntentForPackage(appInfo.packageName);
+            if(i!=null) {
                 startActivity(i);
-            } else{
-                Toast.makeText(getApplicationContext(), "APP nao lançavel", Toast.LENGTH_LONG);
             }
-
-
+            else{
+                Toast.makeText(getApplicationContext(), "App não lançável", Toast.LENGTH_LONG);
+            }
         });
-
-
     }
+
 }
